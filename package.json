@@ -1,0 +1,27 @@
+{
+  "name": "kursuskuy",
+  "version": "1.0.0",
+  "description": "World Class Apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fajrinnr/kursuskuy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fajrinnr/kursuskuy/issues"
+  },
+  "homepage": "https://github.com/fajrinnr/kursuskuy#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "pg": "^7.17.1",
+    "sequelize": "^5.21.3"
+  }
+}
