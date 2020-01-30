@@ -4,9 +4,8 @@
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7 text-center">
-        <span class="sub-title">Pricing</span>
-        <h2 class="font-weight-bold text-black">Choose Your Plan</h2>
-        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo, quasi. Magni deserunt sunt labore.</p>
+        <h2 class="font-weight-bold text-black">List Courses</h2>
+        <p class="mb-5">Start your world by getting one of the our world class courses.</p>
         </div>
     </div>
     <div class="row">
@@ -21,7 +20,7 @@
                         <% if(course.CourseContents[i]) { %>
                             <li><%= course.CourseContents[i].content %></li>
                         <% } %>
-                        <% } %>
+                    <% } %>
                     </ul>
                     <form action="/course/add" method="POST">
                         <input type="hidden" name="CourseId" value="<%= course.id %>">
