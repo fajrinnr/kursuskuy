@@ -5,6 +5,7 @@ const session = require('express-session')
 
 const HomeRoute   = require('./routes/homeRoute')
 const CourseRoute = require('./routes/courseRoute')
+const UserCoursRoute = require('./routes/userRoute')
 
 // Helpers
 const formatMoney = require('./helpers/formatMoney');
@@ -35,6 +36,7 @@ app.use(function(req, res, next){
     }
 })
 
+app.use('/user', UserCoursRoute)
 app.use('/course', CourseRoute)
 
 app.listen(port, ()=> {

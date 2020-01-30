@@ -1,11 +1,12 @@
-<%- include('./../layout/header'); %>
-<%- include('./../frontpage/home'); %>
+<%- include('./layout/header'); %>
+<%- include('./frontpage/home'); %>
 <div class="site-section" id="pricing-section">
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7 text-center">
-        <h2 class="font-weight-bold text-black">List Courses</h2>
-        <p class="mb-5">Start your world by getting one of the our world class courses.</p>
+        <span class="sub-title">Pricing</span>
+        <h2 class="font-weight-bold text-black">Choose Your Plan</h2>
+        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo, quasi. Magni deserunt sunt labore.</p>
         </div>
     </div>
     <div class="row">
@@ -20,9 +21,9 @@
                         <% if(course.CourseContents[i]) { %>
                             <li><%= course.CourseContents[i].content %></li>
                         <% } %>
-                    <% } %>
+                        <% } %>
                     </ul>
-                    <form action="/user/add/<%= course.id %>" method="POST">
+                    <form action="/course/add/<%= course.id %>" method="POST">
                         <input type="hidden" name="CourseId" value="<%= course.id %>">
                         <input type="submit" value="Buy Now" class="btn btn-lg btn-primary rounded-0 btn-block">
                     </form>
@@ -35,4 +36,4 @@
     </div>
 </div>   
 
-<%- include('./../layout/footer'); %>
+<%- include('./layout/footer'); %>

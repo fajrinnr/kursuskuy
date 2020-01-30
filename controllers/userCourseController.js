@@ -1,5 +1,7 @@
 const Index = require('../models/index')
 const UserCourse = Index.UserCourse
+const Course = Index.Course
+const CourseContent = Index.CourseContent
 
 class UserCourseController {
 
@@ -9,14 +11,20 @@ class UserCourseController {
                 CourseId: req.body.CourseId,
                 UserId: req.session.user.id
             }
+
+            let id = req.params.id
                 UserCourse
                     .create(userCourseData)
                     .then(result => {
-                        res.render('courseDetails')
+                        return Course.findByPk(id, {include : CourseContent })
                     })
-                    .catch(error => {
-                        res.send(err)
-                    })
+                        .then(result => {
+                            // res.send(result)
+                            res.render('courseDetails', { userCourse : result })
+                        })
+                        .catch(error => {
+                            res.send(err)
+                        })
         } else {
             res.render('loginUser')
         }

@@ -2,14 +2,20 @@ const express = require('express')
 const Router = express.Router()
 
 const CourseController      = require('./../controllers/CourseController');
-const UserCourseController  = require('../controllers/userCourseController')
 
 Router.get('/', CourseController.listCourses);
-// Router.get('/add', CourseController)
 
-Router.post('/add', UserCourseController.add) // Add User Course
-Router.get('/addCourse', CourseController.addForm);
-Router.post('/saveCourse', CourseController.saveCourse);
+Router.use((req, res, next) => {
+    if (req.session && req.session.user.role == 'admin'){
+        next()
+    } else {
+        res.redirect('/')
+    }
+})
+
 Router.get('/addDetail/:idCourse', CourseController.addCourseDetail);
+Router.get('/addCourse', CourseController.addForm);
+
+Router.post('/saveCourse', CourseController.saveCourse);
 
 module.exports = Router
