@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000
 const HomeRoute = require('./routes/homeRoute')
 const CourseRoute = require('./routes/courseRoute')
 
+app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
 
