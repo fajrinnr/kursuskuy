@@ -10,7 +10,7 @@ class CourseController {
             .findAll({include: [CourseContent]})
             .then(result => {
                 // res.send(result)
-                res.render('courseList', {courses : result});
+                res.render('courses/courseList', {courses : result});
             })
             .catch(err => {
                 res.send(err)
