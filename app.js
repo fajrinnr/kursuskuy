@@ -3,11 +3,14 @@ const app = express()
 const port = process.env.PORT || 3000
 const session = require('express-session')
 
-const HomeRoute = require('./routes/homeRoute')
+const HomeRoute   = require('./routes/homeRoute')
 const CourseRoute = require('./routes/courseRoute')
 
+// Helpers
+const formatMoney = require('./helpers/formatMoney');
+
 app.use(session({
-    secret: 'tes login',
+    secret: 'swadikap lew lew',
     resave: false,
     saveUninitialized: true
 }))
@@ -15,6 +18,9 @@ app.use(session({
 app.locals.user = {
     isLogin:false
 }
+
+app.locals.formatMoney = formatMoney;
+
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
