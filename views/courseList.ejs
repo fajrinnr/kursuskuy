@@ -1,0 +1,39 @@
+<%- include('./layout/header'); %>
+<%- include('./frontpage/home'); %>
+<div class="site-section" id="pricing-section">
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 text-center">
+        <span class="sub-title">Pricing</span>
+        <h2 class="font-weight-bold text-black">Choose Your Plan</h2>
+        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, explicabo, quasi. Magni deserunt sunt labore.</p>
+        </div>
+    </div>
+    <div class="row">
+        <% courses.forEach(course => { %>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 pricing">
+                <div class="border p-5 text-center rounded">
+                <h3><%= course.name %></h3>
+                <div class="price mb-3"><span class="number"><%= formatMoney(course.price) %></span></div>
+                <p class="text-muted mb-4">Course Content</p>
+                <ul class="list-unstyled ul-check text-left success mb-5">
+                    <% for (let i = 0; i < 3; i++) { %>
+                        <% if(course.CourseContents[i]) { %>
+                            <li><%= course.CourseContents[i].content %></li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                    <form action="/course/add" method="POST">
+                        <input type="hidden" name="CourseId" value="<%= course.id %>">
+                        <input type="submit" value="Buy Now" class="btn btn-lg btn-primary rounded-0 btn-block">
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+        
+        
+    </div>
+    </div>
+</div>   
+
+<%- include('./layout/footer'); %>

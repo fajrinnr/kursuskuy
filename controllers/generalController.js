@@ -38,12 +38,13 @@ class GeneralController {
             username: req.body.username
             }
         }
-        console.log(find)
+
         User
             .findOne(find)
             .then(result => {
                 if (isAuthorized(req.body.password, result.password)) {     
                     req.session.user = {
+                        id: result.id,
                         username: result.username,
                         role: result.role,
                         isLogin: true

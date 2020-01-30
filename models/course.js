@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Course.associate = function(models) {
     Course.belongsToMany(models.User, {through: 'UserCourse'})
+    Course.hasMany(models.CourseContent)
   };
   return Course;
 };

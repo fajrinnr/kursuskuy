@@ -1,9 +1,31 @@
 "use strict";
 
+const Index = require('../models/index')
+const Course = Index.Course
+const CourseContent = Index.CourseContent
+
 class CourseController {
     static listCourses(req, res) {
-        res.render('courses/');
+        Course
+            .findAll({include: [CourseContent]})
+            .then(result => {
+                // res.send(result)
+                res.render('courseList', {courses : result});
+            })
+            .catch(err => {
+                res.send(err)
+            })
+        
     }
+
+    static addForm(req, res){
+        res.render()
+    }
+
+    static addCourse(req, res){
+        
+    }
+
 }
 
 module.exports = CourseController;

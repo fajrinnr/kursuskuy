@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   CourseContent.associate = function(models) {
     // associations can be defined here
+    CourseContent.belongsTo(models.Course)
   };
   return CourseContent;
 };
