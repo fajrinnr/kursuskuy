@@ -64,7 +64,7 @@ class GeneralController {
 
     static logout(req, res){
         req.session.destroy(function(err) {
-            req.app.locals.user.isLogin = false
+            req.app.locals.user = {}
             res.redirect('/?success=Successfully logout.')
         })
     }
