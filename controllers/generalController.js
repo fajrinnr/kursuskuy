@@ -20,7 +20,8 @@ class GeneralController {
                 res.redirect('/')
             })
             .catch(error => {
-                res.send(error)
+                console.log(error)
+                res.render('registerUser', { errors : error.errors[0].message})
             })
     }
 

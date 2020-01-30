@@ -1,10 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Register</title>
+</head>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <style>
 	body {
-		background: #C5E1A5;
+		background: rgb(25, 13, 51);
 	}
 	form {
 		width: 60%;
@@ -83,28 +92,34 @@
 }
 
 </style>
-<form>
+<form method="POST">
   <label>
     <p class="label-txt">ENTER YOUR EMAIL</p>
-    <input type="text" class="input">
+    <input type="text" class="input" name="email">
     <div class="line-box">
       <div class="line"></div>
     </div>
   </label>
   <label>
     <p class="label-txt">ENTER YOUR USERNAME</p>
-    <input type="text" class="input">
+    <input type="text" class="input" name="username">
     <div class="line-box">
       <div class="line"></div>
     </div>
   </label>
   <label>
     <p class="label-txt">ENTER YOUR PASSWORD</p>
-    <input type="password" class="input">
+    <input type="password" class="input" name="password">
     <div class="line-box">
       <div class="line"></div>
     </div>
   </label>
+  <% if (typeof errors != 'undefined'){ %>
+	<h6 style="color: red;"><%= errors %></h6>
+<% } %>
+  <br>
   <button><a href="/login">Cancel</a></button>
   <button type="submit">Submit</button>
 </form>
+</body>
+</html>

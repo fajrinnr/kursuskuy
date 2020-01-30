@@ -97,7 +97,7 @@
                       <li><a href="/#contact-section" class="nav-link">Contact</a></li>
                       <% if (user.isLogin) { %>
                         <li><a href="/logout" class="nav-link">Logout</a></li>
-                        <li>Hello <%= user.username %> </li>
+                        <li><span class="title">Hello, <%= user.username %></span> </li>
                         <% } else { %>
                           <li><a href="/login" class="nav-link">Login</a></li>
                       <% } %>
