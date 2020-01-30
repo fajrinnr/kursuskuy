@@ -19,6 +19,8 @@ Router.post('/saveCourse', CourseController.saveCourse);
 Router.post('/saveCourseDetail/:idCourse',CourseController.saveCourseDetail);
 Router.get('/saveCourseDetail/:idCourse',CourseController.saveCourseDetail);
 Router.get('/listCourse', CourseController.listCourseContent);
+Router.get('/edit/:idCourse', CourseController.updateForm)
+Router.post('/edit/:idCourse', CourseController.update)
 Router.get('/delete/:idCourse', CourseController.delete);
 
 module.exports = Router

@@ -20,7 +20,7 @@ class GeneralController {
         User
             .create(userData)
             .then(result => {
-                res.redirect('/')
+                res.redirect('/login')
             })
             .catch(error => {
                 console.log(error)

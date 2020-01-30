@@ -90,6 +90,41 @@ class CourseController {
         })
     }
 
+    static updateForm(req, res){
+        console.log(req.params.idCourse)
+        let id = Number(req.params.idCourse)
+        Course
+            .findByPk(id)
+            .then(result => {
+                res.render('courses/editForm', { course : result})
+            })
+            .catch(err => {
+                console.log(err)
+                res.send('masuk')
+            })
+    }
+
+    static update(req, res){
+        let id = {
+            where : {
+                id: req.params.idCourse
+            }
+        }
+        
+        let course = {
+            name: req.body.name,
+            price: req.body.price
+        }
+            Course
+                .update(course, id)
+                .then(result => {
+                res.redirect(`/course/listCourse?success=Successfully updated contact ${result.name}`)
+                })
+                .catch(err => {
+                res.send(err)
+                })
+    }
+
 }
 
 module.exports = CourseController;

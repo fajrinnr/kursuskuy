@@ -13,7 +13,16 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: 'Username is Empty.'
+        },
+        isExist: function(value) {
+          return User.count({ where: { username: value } })
+            .then(count => {
+              if (count != 0) {
+                throw new Error('Username is already exist.');
+              }
+          });
         }
+        
       }
     },
     email: {
@@ -22,17 +31,33 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: {
           args: true,
           msg: 'Enter Your Email Correctly.'
+        },
+        isExist: function(value) {
+          return User.count({ where: { email: value } })
+            .then(count => {
+              if (count != 0) {
+                throw new Error('Email is already exist.');
+              }
+          });
         }
       }
     },
-    password: DataTypes.STRING,
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [6,15],
+          msg: 'Minimum password length is 6-15 characters'
+        }
+      }
+    },
     role: DataTypes.STRING
   }, {sequelize,
     hooks: {
       beforeCreate(instance, options){
         instance.role     = 'member';
         instance.password = hashPassword(instance.password);
-
+        
       }
     }
   });
