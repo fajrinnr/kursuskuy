@@ -15,7 +15,8 @@ Router.use((req, res, next) => {
 
 Router.get('/addDetail/:idCourse', CourseController.addCourseDetail);
 Router.get('/addCourse', CourseController.addForm);
-
 Router.post('/saveCourse', CourseController.saveCourse);
+Router.post('/saveCourseDetail/:idCourse',CourseController.saveCourseDetail);
+Router.get('/saveCourseDetail/:idCourse',CourseController.saveCourseDetail);
 
 module.exports = Router

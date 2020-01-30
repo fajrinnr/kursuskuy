@@ -38,7 +38,32 @@ class CourseController {
 
     static addCourseDetail(req, res) {
         let idCourse = req.params.idCourse;
-        res.render('courses/addDetail', {idCourse});
+        Course
+            .findByPk(idCourse, {
+                include: [CourseContent]
+            })
+            .then(course => {
+                res.render('courses/addDetail', {course});
+            })
+            .catch(err => {
+                res.send(err);
+            })
+    }
+
+    static saveCourseDetail(req, res) {
+        let idCourse = req.params.idCourse;
+        CourseContent
+            .create({
+                content: req.body.content,
+                link: req.body.link,
+                CourseId: idCourse
+            })
+            .then(resSaveContent => {
+                res.redirect(`/course/addDetail/${idCourse}`);
+            })
+            .catch(err => {
+                res.send(err);
+            })
     }
 
 }

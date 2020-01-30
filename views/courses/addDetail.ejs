@@ -4,23 +4,57 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7 text-center">
-            <h2 class="font-weight-bold text-black">Add Course Detail</h2>
+            <h2 class="font-weight-bold text-black">List content of course [ <%= course.name %> ] </h2>
+            <p class="mb-5">Tambahkan content untuk kursus ini.</p>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id Content</th>
+                <th scope="col">Description</th>
+                <th scope="col">Link</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% course.CourseContents.forEach(content => { %>
+                    <tr>
+                      <th scope="row"><%= content.id %></th>
+                      <td><%= content.content %></td>
+                      <td>
+                          <a target="_blank" href="http://<%= content.link %>">Open Content</a>
+                      </td>
+                      <td>
+                          <a href="">Edit</a>
+                          |
+                          <a href="">Delete</a>
+                      </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <div class="row justify-content-center">
+            <div class="col-md-7 text-center">
+            <h2 class="font-weight-bold text-black">Add Course Content</h2>
             <p class="mb-5">Tambahkan content untuk kursus ini.</p>
             </div>
         </div>
         <div class="col-md-12">
-            <form method="post" action="/course/saveCourse">
+            <form method="post" action="/course/saveCourseDetail/<%= course.id %>">
                 <div class="form-group">
-                  <label>Course's Title</label>
-                  <input name="name" type="text" class="form-control" placeholder="Enter Course's title">
-                  <small class="form-text text-muted">Make sure course's title is lengkap dan jelas.</small>
+                  <label>Content</label>
+                  <input name="content" type="text" class="form-control" placeholder="Enter Content">
+                  <small class="form-text text-muted">Masukan kontent kursus anda.</small>
                 </div>
                 <div class="form-group">
-                    <label>Price</label>
-                    <input name="price" type="number" min="0" class="form-control" placeholder="Enter Course's price">
-                    <small class="form-text text-muted">Make sure course's price is santuy and cucok.</small>
+                    <label>Link</label>
+                    <input name="link" type="text" min="0" class="form-control" placeholder="Enter Content Link">
+                    <small class="form-text text-muted">Make sure link is aksesibel and not tipu tipu.</small>
                 </div>  
-                <button type="submit" class="btn btn-primary">Save Course & Add Contents</button>
+                <button type="submit" class="btn btn-primary">Add Content</button>
               </form>
         </div>
     </div>
