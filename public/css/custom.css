@@ -5,3 +5,7 @@ a {
 .crud, .title{
     color: white;
 }
+
+.black {
+    color: black !important;
+}
