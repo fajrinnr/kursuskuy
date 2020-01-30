@@ -19,7 +19,7 @@ class CourseController {
     }
 
     static addForm(req, res){
-        res.render()
+        res.render('courses/form');
     }
 
     static addCourse(req, res){
