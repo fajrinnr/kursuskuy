@@ -1,7 +1,8 @@
 const Index = require('../models/index')
 const User = Index.User
 
-const isAuthorized = require('./../helpers/isAuthorized');
+const isAuthorized  = require('./../helpers/isAuthorized');
+const sendMail      = require('./../helpers/sendMail');
 
 class GeneralController {
 
@@ -65,6 +66,17 @@ class GeneralController {
             req.app.locals.user.isLogin = false
             res.redirect('/?success=Successfully logout.')
         })
+    }
+
+    static sendEmail(req, res) {
+        const {fullname, email,message} = req.body;
+        sendMail(fullname, email,message)
+            .then(sendEmailStatus => {
+                res.redirect('/');
+            })
+            .catch(err => {
+                res.send(`Error send email ${err}`);
+            })
     }
 
 }
