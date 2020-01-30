@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Course.init({
     name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    detail: DataTypes.STRING
+    price: DataTypes.INTEGER
   }, {sequelize});
 
   Course.associate = function(models) {
