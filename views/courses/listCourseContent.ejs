@@ -1,0 +1,40 @@
+<%- include('./../layout/header'); %>
+<%- include('./../frontpage/home'); %>
+<div class="site-section" id="pricing-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 text-center">
+            <h2 class="font-weight-bold text-black">List Courses </h2>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% courses.forEach(course => { %>
+                    <tr>
+                      <th scope="row"><%= course.id %></th>
+                      <td><%= course.name %></td>
+                      <td><%= course.price %></td>
+                      <td>
+                          <a href="/course/addDetail/<%= course.id %>">Contents</a>
+                          |
+                          <a href="">Edit</a>
+                          |
+                          <a href="/course/delete/<%= course.id %>">Delete</a>
+                      </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>   
+
+<%- include('./../layout/footer'); %>

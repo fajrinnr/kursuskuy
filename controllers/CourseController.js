@@ -15,7 +15,17 @@ class CourseController {
             .catch(err => {
                 res.send(err)
             })
-        
+    }
+
+    static listCourseContent(req, res) {
+        Course
+        .findAll()
+        .then(courses => {
+            res.render('courses/listCourseContent', {courses});
+        })
+        .catch(err => {
+            res.send(err)
+        })
     }
 
     static addForm(req, res){
@@ -64,6 +74,20 @@ class CourseController {
             .catch(err => {
                 res.send(err);
             })
+    }
+
+    static delete(req, res) {
+        Course.destroy({
+            where: {
+                id: Number(req.params.idCourse)
+            }
+        })
+        .then(result => {
+            res.redirect('/course/listCourse');
+        })
+        .catch(err => {
+            res.send(err);
+        })
     }
 
 }
