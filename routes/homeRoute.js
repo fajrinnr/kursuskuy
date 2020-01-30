@@ -9,12 +9,11 @@ Router.get('/', (req, res) => {
 
 Router.get('/login', Controller.loginForm)
 Router.get('/logout', Controller.logout)
+Router.get('/register', Controller.registerForm)
 
+Router.post('/register', Controller.register)
 Router.post('/login', Controller.login)
 
 
-Router.get('/register', (req, res) => {
-    res.render('registerUser')
-})
 
 module.exports = Router

@@ -3,6 +3,27 @@ const User = Index.User
 
 class GeneralController {
 
+    static registerForm(req, res){
+        res.render('registerUser')
+    }
+
+    static register(req, res){
+        let userData = {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+        }
+
+        User
+            .create(userData)
+            .then(result => {
+                res.redirect('/')
+            })
+            .catch(error => {
+                res.send(error)
+            })
+    }
+
     static loginForm(req, res){
         let errorMessage = []
         res.render('loginUser', {errors: errorMessage})
