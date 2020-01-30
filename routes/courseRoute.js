@@ -9,5 +9,7 @@ Router.get('/', CourseController.listCourses);
 
 Router.post('/add', UserCourseController.add) // Add User Course
 Router.get('/addCourse', CourseController.addForm);
+Router.post('/saveCourse', CourseController.saveCourse);
+Router.get('/addDetail/:idCourse', CourseController.addCourseDetail);
 
 module.exports = Router

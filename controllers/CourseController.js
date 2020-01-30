@@ -22,8 +22,23 @@ class CourseController {
         res.render('courses/form');
     }
 
-    static addCourse(req, res){
-        
+    static saveCourse(req, res){
+        Course
+            .create({
+                name: req.body.name,
+                price: req.body.price
+            })
+            .then(resSave => {
+                res.redirect(`/course/addDetail/${resSave.id}`);
+            })
+            .then(err => {
+                res.send(err);
+            })
+    }
+
+    static addCourseDetail(req, res) {
+        let idCourse = req.params.idCourse;
+        res.render('courses/addDetail', {idCourse});
     }
 
 }
