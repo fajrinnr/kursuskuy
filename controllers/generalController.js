@@ -1,6 +1,8 @@
 const Index = require('../models/index')
 const User = Index.User
 
+const isAuthorized = require('./../helpers/isAuthorized');
+
 class GeneralController {
 
     static registerForm(req, res){
@@ -32,21 +34,25 @@ class GeneralController {
 
     static login(req, res){
         let find = { where: {
-            username: req.body.username,
-            password: req.body.password
+            username: req.body.username
             }
         }
         console.log(find)
         User
             .findOne(find)
             .then(result => {
-                req.session.user = {
-                username: result.username,
-                role: result.role,
-                isLogin: true
-            }
-            req.app.locals.user = req.session.user
-            res.redirect(`/?success=Successfully login.`)  
+                if (isAuthorized(req.body.password, result.password)) {     
+                    req.session.user = {
+                        username: result.username,
+                        role: result.role,
+                        isLogin: true
+                    }
+                    req.app.locals.user = req.session.user
+                    res.redirect(`/?success=Successfully login.`)  
+                }else{
+                    let errorMessage = ['Username or Password is wrong.']
+                    res.render('loginUser', { errors : errorMessage })    
+                }
             })
             .catch(err => {
                 let errorMessage = ['Username or Password is wrong.']
