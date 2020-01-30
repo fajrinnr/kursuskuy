@@ -41,7 +41,7 @@ class CourseController {
             .then(resSave => {
                 res.redirect(`/course/addDetail/${resSave.id}`);
             })
-            .then(err => {
+            .catch(err => {
                 res.send(err);
             })
     }
