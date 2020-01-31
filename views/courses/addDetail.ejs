@@ -27,9 +27,10 @@
                           <a target="_blank" href="http://<%= content.link %>">Open Content</a>
                       </td>
                       <td>
-                          <a href="">Edit</a>
+                          <a href="#" style="color: gray;">Edit</a>
                           |
-                          <a href="">Delete</a>
+                          <a href="#" style="color: gray;">Delete</a>
+                          <p>(Edit & Delete versi 0.0.1 belom ready ya...)</p>
                       </td>
                     </tr>
                 <% }) %>
@@ -44,14 +45,6 @@
         </div>
         <div class="col-md-12">
             <form method="post" action="/course/saveCourseDetail/<%= course.id %>">
-                <select name="content">
-                    <option>Pick content...</option>
-                    <% 
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
-                </select>
                 <div class="form-group">
                   <label>Content</label>
                   <input name="content" type="text" class="form-control" placeholder="Enter Content">
