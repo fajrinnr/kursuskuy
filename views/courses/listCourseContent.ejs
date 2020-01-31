@@ -22,7 +22,7 @@
                     <tr>
                       <th scope="row"><%= course.id %></th>
                       <td><%= course.name %></td>
-                      <td><%= course.price %></td>
+                      <td><%= formatMoney(course.price) %></td>
                       <td>
                           <a href="/course/addDetail/<%= course.id %>">Contents</a>
                           |
