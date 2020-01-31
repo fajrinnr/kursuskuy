@@ -7,6 +7,9 @@ const HomeRoute   = require('./routes/homeRoute')
 const CourseRoute = require('./routes/courseRoute')
 const UserCoursRoute = require('./routes/userRoute')
 
+const CourseController      = require('./controllers/CourseController');
+
+
 // Helpers
 const formatMoney = require('./helpers/formatMoney');
 
@@ -27,6 +30,9 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
 
 app.use('/', HomeRoute)
+
+app.get('/course', CourseController.listCourses);
+
 
 app.use(function(req, res, next){
     if (req.session.user){

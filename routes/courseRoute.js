@@ -4,7 +4,6 @@ const Router = express.Router()
 const CourseController      = require('./../controllers/CourseController');
 
 Router.get('/', CourseController.listCourses);
-
 Router.get('/listCourse', CourseController.listCourseContent);
 Router.use((req, res, next) => {
     if (req.session && req.session.user.role == 'admin'){
