@@ -13,7 +13,8 @@
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 pricing">
                 <div class="border p-5 text-center rounded">
                 <h3><%= course.name %></h3>
-                <div class="price mb-3"><span class="number"><%= formatMoney(course.price) %></span></div>
+                <div class="price mb-3"><span class="number" style="text-decoration:line-through"><%= formatMoney(course.price) %></span></div>
+                <div class="price mb-3"><span class="number" style="font-size:x-large;">FREE</span></div>
                 <p class="text-muted mb-4">Course Content</p>
                 <ul class="list-unstyled ul-check text-left success mb-5">
                     <% for (let i = 0; i < 3; i++) { %>
