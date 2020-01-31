@@ -53,7 +53,7 @@ class CourseController {
                 include: [CourseContent]
             })
             .then(course => {
-                res.render('courses/addDetail', {course});
+                res.render('courses/addDetail   ', {course});
             })
             .catch(err => {
                 res.send(err);
